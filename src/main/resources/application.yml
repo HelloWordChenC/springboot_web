@@ -1,0 +1,63 @@
+
+spring:
+
+# 热部署配置
+ devtools:
+    restart:
+      enabled: true  #设置开启热部署
+      additional-paths: src/main/java #重启目录
+      exclude: WEB-INF/**
+ freemarker:
+    cache: false    #页面不加载缓存，修改即时生效
+
+
+# 数据库配置   Jpa
+ datasource:
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://www.cloudgategz.com:3306/myBitesDemo?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+  username: root
+  password: chenchao1204
+  hikari:
+    read-only: false
+    connection-timeout: 60000
+    idle-timeout: 60000
+    validation-timeout: 30000
+    max-lifetime: 60000
+    login-timeout: 5
+    maximum-pool-size: 2007
+    minimum-idle: 10
+ jpa:
+  properties:
+   hibernate:
+    hbm2ddl:
+     auto: update
+     dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+     format_sql: false
+  show-sql: false
+
+
+
+#redis 配置
+ redis:
+   host: 127.0.0.1
+   port: 6379
+   pool:
+       max-active: 8 #连接池最大连接数（使用负值表示没有限制）
+       min-idle: 0   #连接池中的最小空闲连接
+       max-idle: 8   #连接池中的最大空闲连接
+       max-wait: 1   #连接池最大阻塞等待时间（使用负值表示没有限制）
+   timeout: 30000    #连接超时时间（毫秒）
+
+
+server:
+  port: 8082
+
+#日志配置
+logging:
+    #日志xml文件
+    config: classpath:log4j2.xml
+    level:
+      #package下的日志等级
+      com.vae: INFO
+      #此处关闭  启动应用是打印大量的 CONDITIONS EVALUATION REPORT
+      org.springframework.boot.autoconfigure: ERROR
