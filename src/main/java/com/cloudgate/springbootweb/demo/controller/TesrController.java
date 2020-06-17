@@ -58,7 +58,7 @@ public class TesrController {
         //查询缓存中是否存在
         Object object = redisUtils.get(key);
         if(object==null){
-            redisUtils.add(key, UUID.randomUUID().toString());
+            redisUtils.set(key, UUID.randomUUID().toString());
             return "ok";
         }else{
             //数据插入缓存（set中的参数含义：key值，user对象，缓存存在时间10（long类型），时间单位）
