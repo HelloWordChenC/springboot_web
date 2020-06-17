@@ -2,7 +2,7 @@ package com.intercept;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.sf.json.JSONObject;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -22,7 +22,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
         Enumeration enu=request.getParameterNames();
-        JSONObject  obj = new JSONObject();
+        JSONObject obj = new JSONObject();
         String servletURI =request.getServletPath();//项目名称后缀
         String ip =LoginInterceptor.realIP(request);
         while(enu.hasMoreElements()){
