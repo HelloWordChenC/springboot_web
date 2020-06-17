@@ -1,6 +1,5 @@
 
 spring:
-
 # 热部署配置
  devtools:
     restart:
@@ -50,7 +49,11 @@ spring:
 
 
 server:
-  port: 8082
+  port: 8083
+  ssl:
+    key-store: classpath:cloudgategz.com.pfx  #(下载的文件名)
+    key-store-password: ge06s872c2723
+    key-store-type: PKCS12
 
 #日志配置
 logging:
@@ -61,3 +64,9 @@ logging:
       com.vae: INFO
       #此处关闭  启动应用是打印大量的 CONDITIONS EVALUATION REPORT
       org.springframework.boot.autoconfigure: ERROR
+
+
+
+
+
+
